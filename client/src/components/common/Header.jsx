@@ -1,28 +1,20 @@
-import { useState } from "react"
-import { Link, NavLink } from "react-router-dom"
-import {
-  Menu,
-  X,
-  Phone,
-  ChevronDown,
-  ArrowUpRight,
-} from "lucide-react"
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X, Phone, ChevronDown, ArrowUpRight } from "lucide-react";
 
 function Header() {
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
 
   const closeMobileMenu = () => {
-    setIsMobileOpen(false)
-    setIsCollectionsOpen(false)
-  }
+    setIsMobileOpen(false);
+    setIsCollectionsOpen(false);
+  };
 
   const navLinkClass = ({ isActive }) =>
     `text-sm font-medium transition-colors duration-200 ${
-      isActive
-        ? "text-amber-700"
-        : "text-gray-700 hover:text-amber-700"
-    }`
+      isActive ? "text-amber-700" : "text-gray-700 hover:text-amber-700"
+    }`;
 
   const collectionLinks = [
     {
@@ -45,15 +37,13 @@ function Header() {
       name: "Luxury Collection",
       category: "luxury",
     },
-  ]
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
         {/* ================= HEADER ================= */}
         <div className="flex h-20 items-center justify-between">
-
           {/* ================= LOGO ================= */}
           <Link
             to="/"
@@ -66,7 +56,7 @@ function Header() {
 
             <div>
               <h1 className="font-serif text-xl font-semibold tracking-wide text-gray-900 sm:text-2xl">
-                Velora  Rugs
+                Velora Rugs
               </h1>
 
               <p className="text-[9px] uppercase tracking-[0.25em] text-gray-500 sm:text-xs">
@@ -77,7 +67,6 @@ function Header() {
 
           {/* ================= DESKTOP NAV ================= */}
           <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
-
             <NavLink to="/" className={navLinkClass}>
               Home
             </NavLink>
@@ -94,9 +83,7 @@ function Header() {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setIsCollectionsOpen((prev) => !prev)
-                }
+                onClick={() => setIsCollectionsOpen((prev) => !prev)}
                 className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
                   isCollectionsOpen
                     ? "text-amber-700"
@@ -105,7 +92,6 @@ function Header() {
                 aria-expanded={isCollectionsOpen}
               >
                 Collections
-
                 <ChevronDown
                   size={16}
                   className={`transition-transform duration-200 ${
@@ -118,7 +104,6 @@ function Header() {
               {isCollectionsOpen && (
                 <div className="absolute left-1/2 top-full w-64 -translate-x-1/2 pt-4">
                   <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-2xl">
-
                     {collectionLinks.map((item) => (
                       <Link
                         key={item.category}
@@ -127,9 +112,7 @@ function Header() {
                             ? "/products"
                             : `/products?category=${item.category}`
                         }
-                        onClick={() =>
-                          setIsCollectionsOpen(false)
-                        }
+                        onClick={() => setIsCollectionsOpen(false)}
                         className="group flex items-center justify-between border-b border-gray-100 px-5 py-4 text-sm text-gray-600 last:border-b-0 hover:bg-amber-50 hover:text-amber-700"
                       >
                         <span>{item.name}</span>
@@ -140,16 +123,12 @@ function Header() {
                         />
                       </Link>
                     ))}
-
                   </div>
                 </div>
               )}
             </div>
 
-            <Link
-              to="/craftsmanship"
-              className={navLinkClass}
-            >
+            <Link to="/craftsmanship" className={navLinkClass}>
               Craftsmanship
             </Link>
 
@@ -160,17 +139,13 @@ function Header() {
 
           {/* ================= DESKTOP CTA ================= */}
           <div className="hidden items-center gap-4 lg:flex">
-
             <a
-              href="tel:+917068301482"
+              href="tel:+91 70683 01482"
               className="flex items-center gap-2 text-sm font-medium text-gray-700 transition hover:text-amber-700"
             >
-              <Phone
-                size={17}
-                className="text-amber-700"
-              />
+              <Phone size={17} className="text-amber-700" />
 
-              <span>+91 7068301482</span>
+              <span>+91 70683 01482</span>
             </a>
 
             <Link
@@ -184,27 +159,19 @@ function Header() {
           {/* ================= MOBILE BUTTON ================= */}
           <button
             type="button"
-            onClick={() =>
-              setIsMobileOpen((prev) => !prev)
-            }
+            onClick={() => setIsMobileOpen((prev) => !prev)}
             className="rounded-lg p-2 text-gray-800 hover:bg-gray-100 lg:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded={isMobileOpen}
           >
-            {isMobileOpen ? (
-              <X size={27} />
-            ) : (
-              <Menu size={27} />
-            )}
+            {isMobileOpen ? <X size={27} /> : <Menu size={27} />}
           </button>
         </div>
 
         {/* ================= MOBILE MENU ================= */}
         {isMobileOpen && (
           <div className="border-t border-gray-100 py-5 lg:hidden">
-
             <nav className="flex flex-col">
-
               <Link
                 to="/"
                 onClick={closeMobileMenu}
@@ -225,9 +192,7 @@ function Header() {
               <div>
                 <button
                   type="button"
-                  onClick={() =>
-                    setIsCollectionsOpen((prev) => !prev)
-                  }
+                  onClick={() => setIsCollectionsOpen((prev) => !prev)}
                   className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-sm font-medium text-gray-700 hover:bg-amber-50 hover:text-amber-700"
                 >
                   <span>Collections</span>
@@ -235,16 +200,13 @@ function Header() {
                   <ChevronDown
                     size={17}
                     className={`transition-transform ${
-                      isCollectionsOpen
-                        ? "rotate-180"
-                        : ""
+                      isCollectionsOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isCollectionsOpen && (
                   <div className="ml-3 border-l border-amber-200 pl-3">
-
                     {collectionLinks.map((item) => (
                       <Link
                         key={item.category}
@@ -259,7 +221,6 @@ function Header() {
                         {item.name}
                       </Link>
                     ))}
-
                   </div>
                 )}
               </div>
@@ -285,11 +246,7 @@ function Header() {
                 href="tel:+917068301482"
                 className="mt-3 flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-3 text-sm font-medium text-gray-700"
               >
-                <Phone
-                  size={17}
-                  className="text-amber-700"
-                />
-
+                <Phone size={17} className="text-amber-700" />
                 +91 7068301482
               </a>
 
@@ -306,7 +263,7 @@ function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
