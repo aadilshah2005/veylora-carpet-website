@@ -166,20 +166,20 @@ function Footer() {
 
               {/* Phone */}
               <a
-                href="tel:+919999999999"
+                href="tel:+91 70683 01482"
                 className="flex items-center gap-3 text-sm text-gray-400 hover:text-amber-500 transition"
               >
                 <Phone size={17} className="text-amber-600" />
-                +91 99999 99999
+                +91 70683 01482
               </a>
 
               {/* Email */}
               <a
-                href="mailto:info@veloracarpets.com"
+                href="mailto:veloratechhq@gmail.com"
                 className="flex items-center gap-3 text-sm text-gray-400 hover:text-amber-500 transition"
               >
                 <Mail size={17} className="text-amber-600" />
-                info@veloracarpets.com
+                veloratechhq@gmail.com
               </a>
             </div>
 
